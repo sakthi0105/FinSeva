@@ -1,0 +1,11 @@
+rejected_record,rejected_reason
+"transactions | {'txn_id': nan, 'account_id': 'A201', 'timestamp': '2026-06-20 10:00', 'amount': 7500.0, 'city': 'Pune'}",txn_id is null
+"transactions | {'txn_id': 'T9091', 'account_id': nan, 'timestamp': '2026-06-25 16:00', 'amount': 4200.0, 'city': 'Mumbai'}",account_id is null
+"transactions | {'txn_id': 'T9001', 'account_id': 'A204', 'timestamp': '2026-06-01 13:14', 'amount': 104537.0, 'city': 'Pune'}",duplicate txn_id
+"transactions | {'txn_id': 'T9005', 'account_id': 'A220', 'timestamp': '2026-06-29 12:45', 'amount': 7290.0, 'city': 'Bangalore'}",duplicate txn_id
+"transactions | {'txn_id': 'T9089', 'account_id': 'A208', 'timestamp': '2026-06-10 11:00', 'amount': -5000.0, 'city': 'Pune', 'amount_missing_flag': 0}",amount is negative or zero
+"transactions | {'txn_id': 'T9090', 'account_id': 'A215', 'timestamp': '2026-06-12 15:30', 'amount': 0.0, 'city': 'Pune', 'amount_missing_flag': 0}",amount is negative or zero
+"customers | {'account_id': 'A201', 'home_city': 'Pune', 'credit_score': 720.0}",duplicate account_id
+"customers | {'account_id': 'A225', 'home_city': 'Pune', 'credit_score': nan}",credit_score is null
+"customers | {'account_id': 'A223', 'home_city': 'Mumbai', 'credit_score': 250}",credit_score 250 outside valid range 300-900
+"customers | {'account_id': 'A224', 'home_city': 'Delhi', 'credit_score': 950}",credit_score 950 outside valid range 300-900
