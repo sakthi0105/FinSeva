@@ -65,8 +65,14 @@ def load_dimensions(connection, dim_date, dim_customer):
     )
 
     # Load DIM_CUSTOMER
-    customer_data = list(dim_customer[['customer_key', 'account_id', 'home_city', 'credit_score']]
-                         .itertuples(index=False, name=None))
+    dim_customer['account_id'] = dim_customer['account_id'].astype(str)
+    dim_customer['home_city'] = dim_customer['home_city'].astype(str)
+
+    customer_data = [
+        (int(row.customer_key), str(row.account_id), str(row.home_city), int(row.credit_score))
+        for row in dim_customer[['customer_key', 'account_id', 'home_city', 'credit_score']]
+        .itertuples(index=False)
+    ]
 
     cursor.executemany(
         """INSERT INTO FS_DIM_CUSTOMER (CUSTOMER_KEY, ACCOUNT_ID, HOME_CITY, CREDIT_SCORE)
